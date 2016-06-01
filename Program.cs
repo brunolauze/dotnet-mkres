@@ -19,8 +19,10 @@ namespace Microsoft.DotNet.Tools.Resgen
         static void Main(string[] args)
         {
             if (args.Length == 0) return;
-            var sourceFile = new FileInfo(args[0]);
-            var outputFile = new FileInfo(args[1]);
+            var vals = args[0].Split(',');
+            if (vals.Length != 2) return;
+            var sourceFile = new FileInfo(vals[0]);
+            var outputFile = new FileInfo(vals[1]);
             using (var outputStream = outputFile.Create())
             {
               using (var input = sourceFile.OpenRead())
