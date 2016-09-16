@@ -33,11 +33,13 @@ namespace Microsoft.DotNet.Tools.Resgen
                   if (data.Any())
                   {
                       var rw = new ResourceWriter(outputStream);
-  
+                      var keys = new List<string>();
                       foreach (var e in data)
                       {
                           var name = e.Attribute("name").Value;
                           var value = e.Element("value").Value;
+                          if (keys.ContainsKey(name)) continue;
+                          keys.Add(name);
                           rw.AddResource(name, value);
                       }
   
