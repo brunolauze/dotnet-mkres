@@ -38,7 +38,7 @@ namespace Microsoft.DotNet.Tools.Resgen
                       {
                           var name = e.Attribute("name").Value;
                           var value = e.Element("value").Value;
-                          if (keys.ContainsKey(name)) continue;
+                          if (keys.Contains(name)) continue;
                           keys.Add(name);
                           rw.AddResource(name, value);
                       }
